@@ -42,7 +42,7 @@ export default class V1UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get('')
-  @Roles(Role.Admin, Role.SuperAdmin)
+  @Roles(Role.SuperAdmin)
   @ApiOkResponse({ description: 'Ok', type: PaginatedOutDto<UserOutDto> })
   @ApiOperation({ summary: 'Get Users with Filtering, Ordering and Pagination' })
   async get(@Query() dto: UserSearchInDto): Promise<PaginatedOutDto<UserOutDto>> {
@@ -50,7 +50,7 @@ export default class V1UsersController {
   }
 
   @Get('/:id')
-  @Roles(Role.Admin, Role.SuperAdmin)
+  @Roles(Role.SuperAdmin)
   @ApiOkResponse({description: "Ok", type: UserOutDto})
   @ApiNotFoundResponse({description: "Not Found"})
   @ApiBadRequestResponse({description: "Bad Request"})
@@ -60,7 +60,7 @@ export default class V1UsersController {
   }
 
   @Post('')
-  @Roles(Role.Admin, Role.SuperAdmin)
+  @Roles(Role.SuperAdmin)
   @ApiCreatedResponse({description: "Ok", type: UserOutDto})
   @ApiBadRequestResponse({description: "Bad Request"})
   @ApiConflictResponse({description: 'Conflict (Other user with Username)'})
@@ -70,7 +70,7 @@ export default class V1UsersController {
   }
 
   @Patch('/:id')
-  @Roles(Role.Admin, Role.SuperAdmin)
+  @Roles(Role.SuperAdmin)
   @ApiOkResponse({description: "Ok"})
   @ApiNotFoundResponse({description: "Not Found"})
   @ApiBadRequestResponse({description: "Bad Request"})
@@ -84,7 +84,7 @@ export default class V1UsersController {
   }
 
   @Delete('/:id')
-  @Roles(Role.Admin, Role.SuperAdmin)
+  @Roles(Role.SuperAdmin)
   @ApiOkResponse({description: "Ok"})
   @ApiConflictResponse({description: "Conflict (Current user cannot be deleted)"})
   @ApiNotFoundResponse({description: "Not Found"})
@@ -96,7 +96,7 @@ export default class V1UsersController {
   }
 
   @Post('/me')
-  @Roles(Role.Admin, Role.SuperAdmin, Role.User)
+  @Roles(Role.SuperAdmin, Role.User)
   @ApiCreatedResponse({description: "Current user", type: UserOutDto})
   @ApiNotFoundResponse({description: "Not Found"})
   @ApiBadRequestResponse({description: "Bad Request"})

@@ -4,7 +4,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export enum Role{
   User = 'user',
-  Admin = 'admin',
   SuperAdmin = 'superadmin'
 }
 

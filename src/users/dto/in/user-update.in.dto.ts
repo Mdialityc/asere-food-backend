@@ -30,9 +30,6 @@ export default class UserUpdateInDto {
   @Matches(/(?=.*[0-9])/, {
     message: 'password must contain at least one number.',
   })
-  @Matches(/(?=.*\W)/, {
-    message: 'password must contain at least one special character.',
-  })
   @Matches(/(?=.*[A-Z])/, {
     message: 'password must contain at least one uppercase letter.',
   })

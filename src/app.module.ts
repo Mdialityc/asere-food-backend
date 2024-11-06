@@ -6,6 +6,13 @@ import { configSchema } from './utils/schemas/config.schema';
 import AuthModule from './auth/auth.module';
 import DatabaseModule from './database/database.module';
 import UsersModule from './users/users.module';
+import { CategoriesModule } from './categories/categories.module';
+import { PermissionsModule } from './permissions/permissions.module';
+import { ProductCombosModule } from './product-combos/product-combos.module';
+import { ProductInventoriesModule } from './product-inventories/product-inventories.module';
+import { ProductModule } from './products/product.module';
+import { RolesModule } from './roles/roles.module';
+import { ZonesModule } from './zones/zones.module';
 
 @Module({
   imports: [
@@ -21,8 +28,15 @@ import UsersModule from './users/users.module';
       limit: 100,
     }]),
     AuthModule,
+    CategoriesModule,
     DatabaseModule,
-    UsersModule
+    PermissionsModule,
+    ProductCombosModule,
+    ProductInventoriesModule,
+    ProductModule,
+    RolesModule,
+    UsersModule,
+    ZonesModule,
   ],
   controllers: [],
   providers: [],
