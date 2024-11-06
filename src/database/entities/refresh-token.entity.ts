@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'refresh_tokens' })
 export default class RefreshToken {
@@ -6,6 +6,7 @@ export default class RefreshToken {
   id: number;
 
   @Column()
+  @Index({unique: true})
   userId: number;
 
   @Column()

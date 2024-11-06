@@ -2,11 +2,11 @@ import {
   BeforeInsert,
   BeforeUpdate,
   Column,
-  Entity,
+  Entity, Index, ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { Role } from '../../auth/decorators/roles.decorator';
+import Role from './role.entity';
 
 @Entity({ name: 'users' })
 export default class User {
@@ -16,24 +16,30 @@ export default class User {
   @Column('character varying', {length: 255})
   name: string;
 
+  @Column('character varying', {length: 255})
+  lastnames: string;
+
   @Column('character varying', { length: 255 })
   username: string;
 
   @Column('character varying', { length: 255 })
+  @Index({unique: true})
   email: string;
+
+  @Column('character varying', { length: 255 })
+  phoneNumber: string;
 
   @Column()
   password: string;
 
-  @Column({
-    type: 'enum',
-    enum: Role,
-    default: Role.User,
-  })
+  @ManyToOne(() => Role, (role) => role.users, {onDelete: 'CASCADE' })
   role: Role;
 
   @Column('boolean')
   isActive: boolean;
+
+  @Column('boolean')
+  isConfirmed: boolean;
 
   @BeforeInsert()
   @BeforeUpdate()

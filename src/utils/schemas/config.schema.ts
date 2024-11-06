@@ -9,5 +9,14 @@ export const configSchema = Joi.object({
   DB_PORT: Joi.number().required(),
   DB_DATABASE: Joi.string().required(),
   DB_USERNAME: Joi.string().required(),
-  DB_PASSWORD: Joi.string().required()
+  DB_PASSWORD: Joi.string().required(),
+  MAIL_HOST: Joi.string().required(),
+  MAIL_PORT: Joi.number().required(),
+  MAIL_USER: Joi.string().email().required(),
+  MAIL_PASSWORD: Joi.string().required(),
+  MAIL_SECURE: Joi.boolean().required(),
+  SENDER_EMAIL: Joi.string().email().required(),
+  SENDER_NAME: Joi.string().required(),
+  UI_URL: Joi.string().uri().required(),
+  EMAIL_CONFIRMATION_URL: Joi.string().uri().required(),
 }).unknown();

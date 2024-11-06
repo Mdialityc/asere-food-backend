@@ -9,10 +9,14 @@ import UsersModule from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
 import { PermissionsModule } from './permissions/permissions.module';
 import { ProductCombosModule } from './product-combos/product-combos.module';
-import { ProductInventoriesModule } from './product-inventories/product-inventories.module';
 import { ProductModule } from './products/product.module';
 import { RolesModule } from './roles/roles.module';
 import { ZonesModule } from './zones/zones.module';
+import { ProvinceModule } from './province/province.module';
+import { MunicipalityModule } from './municipality/municipality.module';
+import { ProviderModule } from './providers/provider.module';
+import MailModule from './mail/mail.module';
+import { InventoryEntriesModule } from './inventory-entries/product-inventories.module';
 
 @Module({
   imports: [
@@ -32,11 +36,15 @@ import { ZonesModule } from './zones/zones.module';
     DatabaseModule,
     PermissionsModule,
     ProductCombosModule,
-    ProductInventoriesModule,
+    InventoryEntriesModule,
     ProductModule,
     RolesModule,
     UsersModule,
     ZonesModule,
+    ProvinceModule,
+    MunicipalityModule,
+    ProviderModule,
+    MailModule,
   ],
   controllers: [],
   providers: [],

@@ -88,16 +88,4 @@ export default class AuthController {
       dto.newPassword,
     );
   }
-
-  @Post('register')
-  @ApiCreatedResponse({ description: 'Registered New User' })
-  @ApiConflictResponse({
-    description: 'Conflict (User with username already exists)',
-  })
-  @ApiBadRequestResponse({ description: 'Bad Request' })
-  @ApiOperation({ summary: 'Change an students password' })
-  async register(@Body() dto: RegisterInDto) {
-    const superAdminUsername = this.configService.get('SUPER_ADMIN_USERNAME');
-    return this.authService.register(dto, superAdminUsername);
-  }
 }

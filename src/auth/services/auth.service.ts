@@ -130,33 +130,4 @@ export default class AuthService {
 
     this.logger.log(`Updated user Password with ID ${user.id}`);
   }
-
-  async register(dto: RegisterInDto, superAdminUsername: string): Promise<void> {
-    if(superAdminUsername === dto.username){
-      throw new ConflictException(
-        `User with username "${dto.username}" already exists`,
-      );
-    }
-    const existingUser = await this.pgService.users.findOne({
-      where: { username: dto.username },
-    });
-    if (existingUser) {
-      throw new ConflictException(
-        `User with username "${dto.username}" already exists`,
-      );
-    }
-
-    const newUser = this.pgService.users.create({
-      username: dto.username,
-      email: dto.email,
-      password: dto.password,
-      role: Role.User,
-      name: dto.name,
-      isActive: true,
-    });
-    await this.pgService.users.save(newUser);
-
-    this.logger.log(`Registered new user with ID ${newUser.id}`);
-    this.logger.log({ ...dto });
-  }
 }
